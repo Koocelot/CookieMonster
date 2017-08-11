@@ -269,10 +269,11 @@ CM.Sim.CalculateGains = function() {
 	if (CM.Sim.hasAura('Radiant Appetite')) mult *= 2;
 
 	if (Game.hasAura('Dragon\'s Fortune')) {
-		var n = Game.shimmerTypes['golden'].n;
-		for (var i = 0; i < n; i++) {
-			mult *= 2.11;
+		var buffs = 0;
+		for (var i in Game.buffs) {
+			buffs++;
 		}
+		mult*=1+(0.07)*buffs;
 	}
 
 	var rawCookiesPs = CM.Sim.cookiesPs * mult;
